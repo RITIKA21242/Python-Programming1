@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Toolkit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>✨ Math Toolkit</h1>
+
+    <form action="/calculate" method="post">
+
+        <select name="operation">
+            <option value="factorial">Factorial</option>
+            <option value="fibonacci">Fibonacci</option>
+            <option value="prime">Prime Check</option>
+            <option value="palindrome">Palindrome</option>
+            <option value="si">Simple Interest</option>
+        </select>
+
+        <input type="number" name="num" placeholder="Enter number">
+
+        <div class="extra">
+            <input type="text" name="p" placeholder="Principal">
+            <input type="text" name="r" placeholder="Rate">
+            <input type="text" name="t" placeholder="Time">
+        </div>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            Result: {{ result }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

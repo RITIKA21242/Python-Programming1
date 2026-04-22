@@ -11,7 +11,7 @@
 
     <form action="/calculate" method="post">
 
-        <select name="operation">
+        <select name="operation" onchange="toggleInputs(this.value)">
             <option value="factorial">Factorial</option>
             <option value="fibonacci">Fibonacci</option>
             <option value="prime">Prime Check</option>
@@ -19,9 +19,13 @@
             <option value="si">Simple Interest</option>
         </select>
 
-        <input type="number" name="num" placeholder="Enter number">
+        <!-- Number Input -->
+        <div id="numberInput">
+            <input type="number" name="num" placeholder="Enter number">
+        </div>
 
-        <div class="extra">
+        <!-- Simple Interest Inputs -->
+        <div id="siInputs" style="display: none;">
             <input type="text" name="p" placeholder="Principal">
             <input type="text" name="r" placeholder="Rate">
             <input type="text" name="t" placeholder="Time">
@@ -36,6 +40,22 @@
         </div>
     {% endif %}
 </div>
+
+<!-- JavaScript -->
+<script>
+function toggleInputs(operation) {
+    const numberInput = document.getElementById("numberInput");
+    const siInputs = document.getElementById("siInputs");
+
+    if (operation === "si") {
+        numberInput.style.display = "none";
+        siInputs.style.display = "block";
+    } else {
+        numberInput.style.display = "block";
+        siInputs.style.display = "none";
+    }
+}
+</script>
 
 </body>
 </html>
